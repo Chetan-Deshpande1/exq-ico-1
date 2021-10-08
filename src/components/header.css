@@ -1,0 +1,27 @@
+.header{
+   
+    background-color: black;
+        display: flex !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+}
+.header-tag{
+     font-size: 1.5rem;
+    font-weight: 900;
+    color: #FF006A !important;
+        text-align: center;
+
+}
+.dapp-btn{
+    margin-left: 1rem;
+}
+.connect-btn {
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  background-color: #01419a !important;
+  color: white !important;
+  box-shadow: none !important;
+      border-radius: 20px !important;
+      margin-left: 1rem;
+      border: none !important;
+}
