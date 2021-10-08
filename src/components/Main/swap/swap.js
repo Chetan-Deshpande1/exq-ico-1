@@ -281,6 +281,8 @@ const Swap = (props) => {
   };
 
   function copyToClipboard(e) {
+    if (!refLink)
+      return;
     var textField = document.createElement("textarea");
     textField.innerText = refLink;
     document.body.appendChild(textField);
@@ -306,7 +308,7 @@ const Swap = (props) => {
           <CardHeader>
             <Col>
               <h2 className="exchange">BUY EQX</h2>
-              <h6 className="exchange-title">Buy EQX Token In An Instant</h6>
+              <h6 className="exchange-title">Bye EQX Token In An Instant</h6>
             </Col>
           </CardHeader>
           <CardBody>
@@ -358,7 +360,8 @@ const Swap = (props) => {
                 <Input
                   label={
                     <Dropdown
-                      defaultValue="BNB"
+                      defaultValue="USDT"
+                      value="USDT"
                       options={options}
                       onChange={handleSelect}
                       onClick={() => { reset() }}
@@ -389,20 +392,19 @@ const Swap = (props) => {
                 />
               </Col>
             </Row>
-            {props.account ?
-              <Button
-                className="swap-btn"
-                color="primary"
-                size="lg"
-                block
-                onClick={() => {
-                  buttonName == "APPROVE" ? approveToken() : purchaseToken();
-                }}
-              >
-                {buttonName}
-              </Button>
+            <Button
+              href="#connect"
+              className="swap-btn"
+              color="primary"
+              size="lg"
+              block
+              onClick={() => {
+                buttonName == "APPROVE" ? approveToken() : purchaseToken();
+              }}
+            >
+              {props.account ? buttonName : "You are off chain"}
+            </Button>
 
-              : <AccountModal />}
 
             <Row className="ref-copy">
               <h4 className="ref-link"> Your Referral Link : </h4>
@@ -415,13 +417,12 @@ const Swap = (props) => {
                     type="text"
                     name="amount"
                     id="amount"
-                    value={refLink ? refLink : "Bye EQX To Get Referral Bonus Link"}
+                    value={refLink ? refLink : "Buy EQX To Get Referral Bonus Link"}
                     className="ref-input"
                     onClick={copyToClipboard}
                   />
                 </Col>
                 <Col lg={4}>
-
                   {/* <Button
                     className="swap-btn"
                     onClick={() => {
