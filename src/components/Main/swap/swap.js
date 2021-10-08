@@ -358,7 +358,8 @@ const Swap = (props) => {
                 <Input
                   label={
                     <Dropdown
-                      defaultValue="BNB"
+                      defaultValue="USDT"
+                      value="USDT"
                       options={options}
                       onChange={handleSelect}
                       onClick={() => { reset() }}
@@ -420,7 +421,6 @@ const Swap = (props) => {
                   />
                 </Col>
                 <Col lg={4}>
-
                   {/* <Button
                     className="swap-btn"
                     onClick={() => {
