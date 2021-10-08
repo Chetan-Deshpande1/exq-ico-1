@@ -4,6 +4,7 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 import "./style.css";
+import Accountmodal from "../header/Accountmodal";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -98,8 +99,8 @@ export default function GeneralNav() {
                     ABOUT EQX
                   </Link>
                 </div>
-                <div className="block toggle-btn flex justify-between">
-                  <div className={onBtnClass} onClick={() => offChain()}>
+                <div id="connect" className="block toggle-btn flex justify-between">
+                  {/* <div className={onBtnClass} onClick={() => offChain()}>
                     <input
                       type="checkbox"
                       className="hidden"
@@ -114,7 +115,8 @@ export default function GeneralNav() {
                     <label className="font-11">
                       <span className="font-extrabold">ON</span>-WALLET
                     </label>
-                  </div>
+                  </div> */}
+                  <Accountmodal/>
                 </div>
               </div>
             </div>

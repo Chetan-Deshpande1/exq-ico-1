@@ -306,7 +306,7 @@ const Swap = (props) => {
           <CardHeader>
             <Col>
               <h2 className="exchange">BUY EQX</h2>
-              <h6 className="exchange-title">Buy EQX Token In An Instant</h6>
+              <h6 className="exchange-title">Bye EQX Token In An Instant</h6>
             </Col>
           </CardHeader>
           <CardBody>
@@ -389,20 +389,19 @@ const Swap = (props) => {
                 />
               </Col>
             </Row>
-            {props.account ?
-              <Button
-                className="swap-btn"
-                color="primary"
-                size="lg"
-                block
-                onClick={() => {
-                  buttonName == "APPROVE" ? approveToken() : purchaseToken();
-                }}
-              >
-                {buttonName}
-              </Button>
+            <Button
+              href="#connect"
+              className="swap-btn"
+              color="primary"
+              size="lg"
+              block
+              onClick={() => {
+                buttonName == "APPROVE" ? approveToken() : purchaseToken();
+              }}
+            >
+              {props.account ? buttonName : "You are off chain"}
+            </Button>
 
-              : <AccountModal />}
 
             <Row className="ref-copy">
               <h4 className="ref-link"> Your Referral Link : </h4>

@@ -28,6 +28,12 @@ function initWeb3(provider) {
 const AccountModal = (props) => {
   const [currentAccount, setCurrentAccount] = useState(null);
   const [wrongNetwork, setWrongNetwork] = useState(false);
+  const [onBtnClass, setOnBtnClass] = useState(
+    "inline-block chain font-11 shadow-md"
+  );
+  const [offBtnClass, setOffBtnClass] = useState(
+    "inline-block chain-disabled font-11"
+  );
   let web3Modal = null;
   let web3 = null;
   let provider = null;
@@ -260,23 +266,58 @@ const AccountModal = (props) => {
       updateAccount();
     }
   }, [currentAccount]);
+  const [offChk, setOffChk] = useState(true);
+  const [onChk, setOnChk] = useState(false);
 
+  async function offChain() {
+    setOffBtnClass("inline-block chain-disabled font-11");
+    setOnBtnClass("inline-block chain font-11 shadow-md");
+    if (currentAccount)
+      await onDisconnect()
+    setOffChk(false);
+    setOnChk(true);
+  }
+
+  async function onChain() {
+    if (!currentAccount)
+      await onConnect()
+    setOnBtnClass("inline-block chain-disabled font-11");
+    setOffBtnClass("inline-block chain font-11 shadow-md");
+    setOffChk(true);
+    setOnChk(false);
+  }
   return (
     <>
-      <Button
-        className="connect-btn"
-        onClick={currentAccount ? onDisconnect : onConnect}
-      >
-        {window.sessionStorage.getItem("selected_account")
-          ? window.sessionStorage.getItem("selected_account").slice(0, 5) +
-          "..." +
-          window.sessionStorage.getItem("selected_account").slice(37, 42)
-          : "CONNECT WALLET"}
-      </Button>
 
+      {window.sessionStorage.getItem("selected_account")
+        ? window.sessionStorage.getItem("selected_account").slice(0, 5) +
+        "..." +
+        window.sessionStorage.getItem("selected_account").slice(37, 42)
+        : ""
+      }
+
+
+
+      <div className={onBtnClass} onClick={() => offChain()}>
+        <input
+          type="checkbox"
+          className="hidden"
+          checked={offChk}
+        />
+        <label className="font-11">
+          <span className="font-extrabold">OFF</span>-WALLET
+        </label>
+      </div>
+      <div className={offBtnClass} onClick={() => onChain()}>
+        <input type="checkbox" className="hidden" checked={onChk} />
+        <label className="font-11">
+          <span className="font-extrabold">ON</span>-WALLET
+        </label>
+      </div>
     </>
   );
 };
+
 const mapStateToProps = (state) => {
   return {
     account: state.account,
