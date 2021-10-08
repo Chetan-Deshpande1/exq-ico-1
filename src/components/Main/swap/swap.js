@@ -281,6 +281,8 @@ const Swap = (props) => {
   };
 
   function copyToClipboard(e) {
+    if (!refLink)
+      return;
     var textField = document.createElement("textarea");
     textField.innerText = refLink;
     document.body.appendChild(textField);
@@ -415,7 +417,7 @@ const Swap = (props) => {
                     type="text"
                     name="amount"
                     id="amount"
-                    value={refLink ? refLink : "Bye EQX To Get Referral Bonus Link"}
+                    value={refLink ? refLink : "Buy EQX To Get Referral Bonus Link"}
                     className="ref-input"
                     onClick={copyToClipboard}
                   />
