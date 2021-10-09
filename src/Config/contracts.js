@@ -21,7 +21,7 @@ const contracts = {
     },
     crowdsale: {
         56: '',
-        97: '0x5D6658cc2dabaEa5eaA57adeBd946F8fbE38390A',
+        97: '0xC067B4Cc56e5Fb2Bb285587ea4c5f2F20d2C3dd3',
     },
     bnb: {
         56: '',
